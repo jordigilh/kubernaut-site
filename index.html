@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kubernaut — AIOps Platform for Intelligent Kubernetes Remediation</title>
+<meta name="description" content="Kubernaut closes the loop from Kubernetes alert to automated remediation, with root cause found and a fix selected in under 3 minutes on average, and Fleet Management to run it across your whole cluster estate.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kubernaut.ai/">
+<meta property="og:site_name" content="Kubernaut">
+<meta property="og:title" content="Kubernaut — AIOps Platform for Intelligent Kubernetes Remediation">
+<meta property="og:description" content="Open source, LLM-powered remediation for Kubernetes. Root cause found and a fix selected in under 3 minutes on average, with Fleet Management to run it across hundreds of clusters.">
+<meta property="og:image" content="https://kubernaut.ai/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kubernaut — AIOps Platform for Intelligent Kubernetes Remediation">
+<meta name="twitter:description" content="Open source, LLM-powered remediation for Kubernetes. Root cause found and a fix selected in under 3 minutes on average, with Fleet Management to run it across hundreds of clusters.">
+<meta name="twitter:image" content="https://kubernaut.ai/assets/og-image.png">
+
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap navwrap">
+    <a class="mark" href="#top">
+      <img src="assets/logo.svg" alt="" width="24" height="24">
+      Kubernaut
+    </a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#console">Console</a>
+      <a href="#showcase">In action</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#features">Features</a>
+      <a href="https://github.com/jordigilh/kubernaut" class="navgh" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/getting-started/installation/" class="navcta">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero reveal">
+  <div class="wrap">
+    <p class="eyebrow rise" style="--i:0">Open source &middot; Fleet-wide AIOps for Kubernetes</p>
+    <h1 class="display rise" style="--i:1">From Kubernetes alert to automated remediation.</h1>
+    <p class="lede rise" style="--i:2">Kubernaut detects signals, investigates root causes with an LLM-powered agent, selects a remediation workflow, and executes the fix &mdash; on a single cluster or across your entire fleet &mdash; or escalates to a human with a full RCA when it can&rsquo;t.</p>
+    <p class="lede-stat rise" style="--i:3"><strong>Root cause found and a fix selected in under 3 minutes on average</strong>, while humans stay in control through approval gates and audit trails.</p>
+
+    <div class="cta rise" style="--i:4">
+      <a class="btn" href="https://jordigilh.github.io/kubernaut-docs/latest/getting-started/installation/">Get Started</a>
+      <a class="btn ghost" href="https://github.com/jordigilh/kubernaut">
+        <svg class="gh" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <div class="cue rise" style="--i:5"><i></i> Scroll</div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="section">
+  <div class="wrap">
+    <p class="eyebrow reveal-item">How it works</p>
+    <h2 class="reveal-item">A CRD-native remediation pipeline.</h2>
+    <p class="section-lede reveal-item">Six phases, one Remediation Orchestrator, and full audit trails from the first signal to the final notification.</p>
+    <p class="phases-intro reveal-item">Every remediation starts one of two ways: <strong>autonomously</strong>, the moment a signal fires from AlertManager or a Kubernetes Event, or <strong>interactively</strong>, when an operator opens a live investigation, watches it unfold in real time, and decides whether the recommended fix runs &mdash; more on that below. Either way, it&rsquo;s the same pipeline from here.</p>
+
+    <ol class="phases">
+      <li class="reveal-item">
+        <span class="phase-tag">01</span>
+        <h3>Signal Processing</h3>
+        <p>A dedicated controller enriches the signal with Kubernetes context (owner chain, namespace labels), then classifies environment, priority, and severity via Rego policy.</p>
+      </li>
+      <li class="reveal-item">
+        <span class="phase-tag c-aa">02</span>
+        <h3>AI Analysis</h3>
+        <p>The Kubernaut Agent investigates with 36 built-in tools, produces a root cause analysis, and selects a workflow from the RemediationWorkflow catalog.</p>
+      </li>
+      <li class="reveal-item">
+        <span class="phase-tag c-approval">03</span>
+        <h3>Approval</h3>
+        <p>Low-risk actions auto-approve via OPA/Rego policy and confidence thresholds; higher-risk remediations notify an operator via Slack, Teams, or PagerDuty.</p>
+      </li>
+      <li class="reveal-item">
+        <span class="phase-tag c-exec">04</span>
+        <h3>Execution</h3>
+        <p>Fixes run as Kubernetes Jobs, Tekton Pipelines, or Ansible (AWX/AAP) &mdash; each under a dedicated ServiceAccount with short-lived, no-standing-privilege tokens.</p>
+      </li>
+      <li class="reveal-item">
+        <span class="phase-tag c-eff">05</span>
+        <h3>Effectiveness</h3>
+        <p>Post-remediation verification confirms alert resolution, checks for spec drift, and produces a four-dimensional health score.</p>
+      </li>
+      <li class="reveal-item">
+        <span class="phase-tag c-notif">06</span>
+        <h3>Notification</h3>
+        <p>Multi-channel delivery to Slack, PagerDuty, Teams, or log/file, with circuit-breaker retry and a full audit trail per attempt.</p>
+      </li>
+    </ol>
+
+    <p class="phases-note reveal-item">Analysis and fix selection are the fast part &mdash; about 3 minutes on average across the incidents below. Most of what&rsquo;s left is deliberate: a 5-minute stabilization window before Effectiveness even starts scoring, so Kubernaut isn&rsquo;t judging a cluster that hasn&rsquo;t settled yet. End to end, signal to a verified fix, typically completes in under 12 minutes &mdash; no human required in the loop, for the cases that don&rsquo;t need one.</p>
+  </div>
+</section>
+
+<!-- ============ KUBERNAUT CONSOLE ============ -->
+<section id="console" class="section alt">
+  <div class="wrap">
+    <p class="eyebrow reveal-item">Kubernaut Console</p>
+    <h2 class="reveal-item">Not just autonomous &mdash; talk to it.</h2>
+    <p class="section-lede reveal-item">Every investigation is also a live conversation. The same agent that runs autonomously the moment a signal fires is reachable directly, too &mdash; open the Console over MCP or A2A, start a fresh investigation or join one already running, and watch it think in real time, with the same approval gates.</p>
+
+    <div class="console-video reveal-item">
+      <video controls preload="metadata" poster="assets/console-demo-poster.jpg">
+        <source src="assets/videos/console-demo.mp4" type="video/mp4">
+      </video>
+      <p class="console-video-caption">Recorded live: the Console investigating a real KubePodCrashLooping incident, discovering a workflow, and ruling out an in-cluster patch because the cluster is GitOps-managed. Loops like this typically close end to end &mdash; including Kubernaut&rsquo;s own built-in wait before it verifies the fix &mdash; in under 12 minutes.</p>
+    </div>
+
+    <div class="features-grid console-grid">
+      <article class="reveal-item">
+        <h3>Live thinking panel</h3>
+        <p>Watch the agent&rsquo;s reasoning, tool calls, and investigation events stream in as they happen &mdash; not a spinner, the actual chain of thought.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>RCA cards, not walls of text</h3>
+        <p>Root cause arrives as a structured card: causal chain, confidence score, severity, and tool call count.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Workflow selection with alignment verdicts</h3>
+        <p>Review the recommended remediation workflow and its parameters, with a countdown confirmation before anything runs.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Approval gate, built in</h3>
+        <p>Approve, decline, or escalate with a reason &mdash; directly from the same conversation, no context switch to a separate tool.</p>
+      </article>
+    </div>
+
+    <div class="console-cta reveal-item">
+      <a class="btn" href="https://jordigilh.github.io/kubernaut-docs/latest/user-guide/interactive-sessions/">Read the Console docs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REAL INCIDENTS ============ -->
+<section id="showcase" class="section">
+  <div class="wrap">
+    <p class="eyebrow reveal-item">Real incidents</p>
+    <h2 class="reveal-item">See what the agent actually found.</h2>
+    <p class="section-lede reveal-item">No cherry-picked screenshots &mdash; every signal, root cause, and outcome below is captured verbatim from a real incident run.</p>
+
+    <div class="showcase reveal-item">
+      <div class="showcase-tabs" role="tablist">
+        <button class="showcase-tab is-active" data-target="t-mesh" role="tab" aria-selected="true">100% of traffic blocked<span>Service mesh outage</span></button>
+        <button class="showcase-tab" data-target="t-etcd" role="tab" aria-selected="false">Defragged etcd without losing quorum<span>Control-plane recovery</span></button>
+        <button class="showcase-tab" data-target="t-gitops" role="tab" aria-selected="false">Git revert, not a patch<span>GitOps-aware fix</span></button>
+        <button class="showcase-tab" data-target="t-pvc" role="tab" aria-selected="false">Expanded a PVC before it filled<span>Predictive capacity</span></button>
+        <button class="showcase-tab" data-target="t-crossns" role="tab" aria-selected="false">Traced the crash two namespaces away<span>Cross-namespace RCA</span></button>
+        <button class="showcase-tab" data-target="t-operator" role="tab" aria-selected="false">Restored a vanished operator<span>OLM / CRD lifecycle</span></button>
+      </div>
+
+      <div class="showcase-panels">
+        <div class="showcase-panel is-active" id="t-mesh">
+          <div class="showcase-meta">
+            <span class="tag mono">IstioHighDenyRate</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">3m 57s</span>
+            <span class="stat-pill">97% confidence</span>
+          </div>
+          <p class="showcase-signal">Every request in the namespace returning 403</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>An Istio AuthorizationPolicy with an empty deny rule is silently blocking every request in the namespace.</p></div>
+            <div><h4>Fix</h4><p>Corrected the AuthorizationPolicy scope, restoring traffic without touching the app.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/mesh-routing-failure">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+
+        <div class="showcase-panel" id="t-etcd">
+          <div class="showcase-meta">
+            <span class="tag mono">EtcdHighFragmentationRatio</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">2m 55s</span>
+            <span class="stat-pill">97% confidence</span>
+          </div>
+          <p class="showcase-signal">All three etcd members at ~99.97% fragmentation</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>Compaction had run but defragmentation never had &mdash; leaving ~62 MiB of dead BoltDB pages across all three etcd members, live data down to 16 KiB.</p></div>
+            <div><h4>Fix</h4><p>Sequential etcdctl defrag across all three members &mdash; followers first, then leader &mdash; with health checks between each.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/etcd-defrag-forecast">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+
+        <div class="showcase-panel" id="t-gitops">
+          <div class="showcase-meta">
+            <span class="tag mono">KubePodCrashLooping</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">2m 17s</span>
+            <span class="stat-pill">95% confidence</span>
+          </div>
+          <p class="showcase-signal">web-frontend crash-looping after an ArgoCD sync</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>A bad commit synced by ArgoCD&rsquo;s self-heal loop keeps re-breaking the ConfigMap &mdash; patching the cluster directly would be undone within seconds.</p></div>
+            <div><h4>Fix</h4><p>Selected a git-revert workflow instead of an in-cluster patch, so the fix survives the next sync.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/gitops-drift">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+
+        <div class="showcase-panel" id="t-pvc">
+          <div class="showcase-meta">
+            <span class="tag mono">PVRunwayShort</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">2m 53s</span>
+            <span class="stat-pill">85% confidence</span>
+          </div>
+          <p class="showcase-signal"><code>predict_linear</code> projects this PVC exhausting in under an hour</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>A sidecar container was writing ~400 MiB/hour of uncompressed data into a 512Mi PVC with no retention policy &mdash; caught by trend prediction before the volume filled.</p></div>
+            <div><h4>Fix</h4><p>Expanded the PVC online via its CSI driver, buying time before PostgreSQL would have crashed, while the underlying write-rate and retention issue gets fixed separately.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/pvc-capacity-forecast">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+
+        <div class="showcase-panel" id="t-crossns">
+          <div class="showcase-meta">
+            <span class="tag mono">KubePodCrashLooping</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">2m 43s</span>
+            <span class="stat-pill">93% confidence</span>
+          </div>
+          <p class="showcase-signal">api-gateway crash-looping &mdash; but the alert fired in the wrong namespace</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>A bad directive in the postgres-config ConfigMap, two namespaces away, crashed Postgres &mdash; which cascaded into api-gateway and payment-processor, both crash-looping on a database they couldn&rsquo;t reach.</p></div>
+            <div><h4>Fix</h4><p>Removed the bad directive from the ConfigMap and restarted the affected Deployment, instead of stopping at the symptom in the alerting namespace.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/cross-namespace-dependency">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+
+        <div class="showcase-panel" id="t-operator">
+          <div class="showcase-meta">
+            <span class="tag mono">OperatorCSVFailed</span>
+            <span class="badge badge-ok">Remediated</span>
+            <span class="stat-pill">4m 15s</span>
+            <span class="stat-pill">92% confidence</span>
+          </div>
+          <p class="showcase-signal">The etcd operator&rsquo;s CSV vanished entirely &mdash; OLM couldn&rsquo;t resolve the package</p>
+          <div class="showcase-grid">
+            <div><h4>Root cause</h4><p>The etcd Subscription was patched to reference a CatalogSource that no longer existed, leaving OLM unable to resolve the operator &mdash; its ClusterServiceVersion was completely absent from the namespace.</p></div>
+            <div><h4>Fix</h4><p>Deleted and recreated the Subscription CRD against the correct CatalogSource, restoring the operator&rsquo;s CSV.</p></div>
+          </div>
+          <p class="showcase-try"><a href="https://github.com/jordigilh/kubernaut-demo-scenarios/tree/main/scenarios/operator-health">Try this scenario yourself <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+      </div>
+
+      <p class="showcase-caption">Real signals, root-cause analyses, and outcomes captured verbatim from Kubernaut&rsquo;s open <a href="https://github.com/jordigilh/kubernaut-demo-scenarios">demo scenario suite</a>. The remediation workflows shown are reference examples &mdash; every deployment authors its own workflow catalog so fixes match your organization&rsquo;s SOPs, tooling, and change-management process.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLEET MANAGEMENT ============ -->
+<section id="fleet" class="section alt fleet-section">
+  <div class="wrap fleet-wrap">
+    <div class="fleet-copy">
+      <p class="eyebrow reveal-item">Fleet Management</p>
+      <h2 class="reveal-item">One remediation brain for hundreds of clusters.</h2>
+      <p class="section-lede reveal-item">At hundreds of clusters, provisioning is already solved &mdash; your GitOps or fleet control plane handles that well. What doesn&rsquo;t scale on its own is operations: every cluster still means its own on-call triage, its own root-cause digging, its own runbook sprawl. Fleet Management plugs into the estate you already run and extends one Kubernaut deployment across every cluster, so incident response scales with your fleet instead of your headcount.</p>
+
+      <dl class="fleet-points">
+        <div class="reveal-item">
+          <dt>Control-plane agnostic by design</dt>
+          <dd>Running a GitOps-managed fleet with no central control plane at all? Kubernaut&rsquo;s built-in Fleet Metadata Cache covers the same ground out of the box &mdash; nothing extra to stand up. Already run a fleet control plane instead? Kubernaut plugs straight into it &mdash; Red Hat ACM / Open Cluster Management is supported today, with adapters for <a href="https://github.com/jordigilh/kubernaut/issues/1482">SUSE Rancher</a>, <a href="https://github.com/jordigilh/kubernaut/issues/2173">Karmada</a>, and <a href="https://github.com/jordigilh/kubernaut/issues/1483">Clusterpedia</a> on the roadmap.</dd>
+        </div>
+        <div class="reveal-item">
+          <dt>Cross-cluster root cause analysis</dt>
+          <dd>Every cluster in the fleet exposes a standard K8s MCP Server behind an MCP Gateway (Envoy AI Gateway or Kuadrant &mdash; external infrastructure you deploy once, the same way you&rsquo;d stand up Prometheus). The agent&rsquo;s tool schema is byte-identical whether it&rsquo;s inspecting the hub or cluster #247, so root-cause chains that span clusters stay traceable end to end.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="fleet-visual reveal-item" aria-hidden="true">
+      <svg viewBox="0 0 480 380" class="fleet-svg fleet-svg-arch">
+        <defs>
+          <!-- Official CNCF single-color Kubernetes mark (cncf/artwork, icon/black), used unmodified aside from tint -->
+          <g id="k8s-mark">
+            <path d="M134.358 126.46551a3.59023 3.59023 0 0 0-.855-.065 3.68515 3.68515 0 0 0-1.425.37 3.725 3.725 0 0 0-1.803 4.825l-.026.037 8.528 20.603a43.53012 43.53012 0 0 0 17.595-22.102l-21.976-3.714zm-34.194 2.92a3.72 3.72 0 0 0-3.568-2.894 3.6556 3.6556 0 0 0-.733.065l-.037-.045-21.785 3.698a43.69506 43.69506 0 0 0 17.54 21.946l8.442-20.399-.066-.08a3.68318 3.68318 0 0 0 .207-2.291zm18.245 8a3.718 3.718 0 0 0-6.557.008h-.018l-10.713 19.372a43.637 43.637 0 0 0 23.815 1.225q2.197-.5 4.292-1.199l-10.738-19.407zm33.914-45l-16.483 14.753.009.047a3.725 3.725 0 0 0 1.46 6.395l.02.089 21.35 6.15a44.278 44.278 0 0 0-6.356-27.432zM121.7 94.0385a3.725 3.725 0 0 0 5.913 2.84l.065.028 18.036-12.789a43.85 43.85 0 0 0-25.287-12.19l1.253 22.105zm-19.1 2.922a3.72 3.72 0 0 0 5.904-2.85l.092-.044 1.253-22.139a44.68209 44.68209 0 0 0-4.501.775 43.4669 43.4669 0 0 0-20.937 11.409l18.154 12.869zm-9.678 16.728a3.72 3.72 0 0 0 1.462-6.396l.018-.087-16.574-14.825a43.454 43.454 0 0 0-6.168 27.511l21.245-6.13zm16.098 6.512l6.114 2.94 6.096-2.933 1.514-6.582-4.219-5.276h-6.79l-4.231 5.268z"></path>
+            <path d="M216.208 133.16651l-17.422-75.675a13.60207 13.60207 0 0 0-7.293-9.073l-70.521-33.67a13.589 13.589 0 0 0-11.705 0l-70.507 33.688a13.598 13.598 0 0 0-7.295 9.072l-17.394 75.673a13.315 13.315 0 0 0-.004 5.81 13.50607 13.50607 0 0 0 .491 1.718 13.0998 13.0998 0 0 0 1.343 2.726c.239.365.491.72.765 1.064l48.804 60.678c.213.264.448.505.681.75a13.42334 13.42334 0 0 0 2.574 2.133 13.9237 13.9237 0 0 0 3.857 1.677 13.29785 13.29785 0 0 0 3.43.473h.759l77.504-.018a12.99345 12.99345 0 0 0 1.41-.083 13.46921 13.46921 0 0 0 1.989-.378 13.872 13.872 0 0 0 1.381-.442c.353-.135.705-.27 1.045-.433a13.94127 13.94127 0 0 0 1.479-.822 13.30347 13.30347 0 0 0 3.237-2.865l1.488-1.85 47.299-58.84a13.185 13.185 0 0 0 2.108-3.785 13.67036 13.67036 0 0 0 .5-1.724 13.28215 13.28215 0 0 0-.004-5.809zm-73.147 29.432a14.51575 14.51575 0 0 0 .703 1.703 3.314 3.314 0 0 0-.327 2.49 39.37244 39.37244 0 0 0 3.742 6.7 35.06044 35.06044 0 0 1 2.263 3.364c.17.315.392.803.553 1.136a4.24 4.24 0 1 1-7.63 3.607c-.161-.33-.385-.77-.522-1.082a35.27528 35.27528 0 0 1-1.225-3.868 39.3046 39.3046 0 0 0-2.896-7.097 3.335 3.335 0 0 0-2.154-1.307c-.135-.233-.635-1.149-.903-1.623a54.617 54.617 0 0 1-38.948-.1l-.955 1.731a3.429 3.429 0 0 0-1.819.886 29.51728 29.51728 0 0 0-3.268 7.582 34.89931 34.89931 0 0 1-1.218 3.868c-.135.31-.361.744-.522 1.073v.009l-.007.008a4.238 4.238 0 1 1-7.619-3.616c.159-.335.372-.82.54-1.135a35.17706 35.17706 0 0 1 2.262-3.373 41.22786 41.22786 0 0 0 3.82-6.866 4.18792 4.18792 0 0 0-.376-2.387l.768-1.84a54.922 54.922 0 0 1-24.338-30.387l-1.839.313a4.68007 4.68007 0 0 0-2.428-.855 39.52352 39.52352 0 0 0-7.356 2.165 35.58886 35.58886 0 0 1-3.787 1.45c-.305.084-.745.168-1.093.244-.028.01-.052.022-.08.029a.60518.60518 0 0 1-.065.006 4.236 4.236 0 1 1-1.874-8.224l.061-.015.037-.01c.353-.083.805-.2 1.127-.262a35.27 35.27 0 0 1 4.05-.326 39.38835 39.38835 0 0 0 7.564-1.242 5.83506 5.83506 0 0 0 1.814-1.83l1.767-.516a54.613 54.613 0 0 1 8.613-38.073l-1.353-1.206a4.688 4.688 0 0 0-.848-2.436 39.36558 39.36558 0 0 0-6.277-4.41 35.2503 35.2503 0 0 1-3.499-2.046c-.256-.191-.596-.478-.874-.704l-.063-.044a4.473 4.473 0 0 1-1.038-6.222 4.066 4.066 0 0 1 3.363-1.488 5.03 5.03 0 0 1 2.942 1.11c.287.225.68.526.935.745a35.25285 35.25285 0 0 1 2.78 2.95 39.38314 39.38314 0 0 0 5.69 5.142 3.333 3.333 0 0 0 2.507.243q.754.55 1.522 1.082a54.28892 54.28892 0 0 1 27.577-15.754 55.05181 55.05181 0 0 1 7.63-1.173l.1-1.784a4.6001 4.6001 0 0 0 1.37-2.184 39.47551 39.47551 0 0 0-.47-7.654 35.466 35.466 0 0 1-.576-4.014c-.011-.307.006-.731.01-1.081 0-.04-.01-.079-.01-.118a4.242 4.242 0 1 1 8.441-.004c0 .37.022.861.009 1.2a35.109 35.109 0 0 1-.579 4.013 39.53346 39.53346 0 0 0-.478 7.656 3.344 3.344 0 0 0 1.379 2.11c.015.305.065 1.323.102 1.884a55.309 55.309 0 0 1 35.032 16.927l1.606-1.147a4.6901 4.6901 0 0 0 2.56-.278 39.53152 39.53152 0 0 0 5.69-5.148 35.00382 35.00382 0 0 1 2.787-2.95c.259-.222.65-.52.936-.746a4.242 4.242 0 1 1 5.258 6.598c-.283.229-.657.548-.929.75a35.09523 35.09523 0 0 1-3.507 2.046 39.49476 39.49476 0 0 0-6.277 4.41 3.337 3.337 0 0 0-.792 2.39c-.235.216-1.06.947-1.497 1.343a54.837 54.837 0 0 1 8.792 37.983l1.704.496a4.7449 4.7449 0 0 0 1.82 1.831 39.46448 39.46448 0 0 0 7.568 1.245 35.64041 35.64041 0 0 1 4.046.324c.355.065.868.207 1.23.29a4.236 4.236 0 1 1-1.878 8.223l-.061-.008c-.028-.007-.054-.022-.083-.029-.348-.076-.785-.152-1.09-.232a35.1407 35.1407 0 0 1-3.785-1.462 39.47672 39.47672 0 0 0-7.363-2.165 3.337 3.337 0 0 0-2.362.877q-.9-.171-1.804-.316a54.91994 54.91994 0 0 1-24.328 30.605z"></path>
+          </g>
+
+          <!-- Kubernaut brand mark, unmodified from assets/logo.svg -->
+          <g id="kubernaut-mark">
+            <rect x="10" y="10" width="180" height="180" rx="32" ry="32" fill="#1a1a2e" stroke="#333" stroke-width="3"></rect>
+            <path d="M100,92 C82,66 38,66 38,100 C38,134 82,134 100,108" fill="none" stroke="#e0e0e0" stroke-width="8" stroke-linecap="round"></path>
+            <path d="M100,92 C118,66 162,66 162,100 C162,134 118,134 100,108" fill="none" stroke="#D97706" stroke-width="8" stroke-linecap="round"></path>
+          </g>
+        </defs>
+
+        <!-- Hub cluster boundary: the Engine itself runs on a Kubernetes cluster, just like the fleet it manages -->
+        <rect x="18" y="128" width="124" height="124" rx="20" class="hub-boundary"></rect>
+        <text x="80" y="270" text-anchor="middle" class="cluster-label">hub cluster</text>
+
+        <!-- Engine \u2192 Gateway -->
+        <line x1="126" y1="190" x2="190" y2="190" class="spoke"></line>
+        <!-- Gateway \u2192 remote clusters -->
+        <line x1="290" y1="190" x2="400" y2="90" class="spoke"></line>
+        <line x1="290" y1="190" x2="400" y2="190" class="spoke"></line>
+        <line x1="290" y1="190" x2="400" y2="290" class="spoke"></line>
+
+        <!-- Kubernaut Engine: the actual brand mark, not a generic node glyph -->
+        <use href="#kubernaut-mark" transform="translate(52,162) scale(0.28)"></use>
+        <text x="80" y="234" text-anchor="middle" class="group-label">Kubernaut engine</text>
+
+        <!-- Small badge: the hub cluster also exposes the same K8s MCP Server as remote clusters -->
+        <g class="cluster-node cluster-node-mini"><circle cx="120" cy="148" r="11"></circle><use href="#k8s-mark" class="k8s-mark" transform="translate(111.81,140.06) scale(0.0711)"></use></g>
+
+        <!-- MCP Gateway -->
+        <rect x="190" y="165" width="100" height="50" rx="10" class="gateway-node"></rect>
+        <text x="240" y="194" text-anchor="middle" class="gateway-label">MCP Gateway</text>
+
+        <!-- Remote clusters, each running a K8s MCP Server -->
+        <g class="cluster-node"><circle cx="400" cy="90" r="26"></circle><use href="#k8s-mark" class="k8s-mark" transform="translate(382.5,73.03) scale(0.152)"></use></g>
+        <text x="400" y="130" text-anchor="middle" class="cluster-label">prod-us-east-1</text>
+        <g class="cluster-node"><circle cx="400" cy="190" r="26"></circle><use href="#k8s-mark" class="k8s-mark" transform="translate(382.5,173.03) scale(0.152)"></use></g>
+        <text x="400" y="230" text-anchor="middle" class="cluster-label">prod-us-east-2</text>
+        <g class="cluster-node"><circle cx="400" cy="290" r="26"></circle><use href="#k8s-mark" class="k8s-mark" transform="translate(382.5,273.03) scale(0.152)"></use></g>
+        <text x="400" y="330" text-anchor="middle" class="cluster-label">stage-us-west-2</text>
+
+        <text x="400" y="42" text-anchor="middle" class="group-label">K8s MCP Server</text>
+        <text x="400" y="56" text-anchor="middle" class="group-sublabel">same tools, every cluster</text>
+        <text x="400" y="354" text-anchor="middle" class="more-label">+ hundreds more</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap fleet-security">
+    <p class="eyebrow reveal-item">Security, by construction</p>
+    <h2 class="reveal-item">Read-only reasoning. Scoped, audited execution.</h2>
+    <p class="section-lede reveal-item">Every guarantee below holds even if the model gets something wrong &mdash; no standing credentials, no unbounded blast radius, no action without an audit trail.</p>
+    <div class="features-grid">
+      <article class="reveal-item">
+        <h3>Scope-gated by design</h3>
+        <p>The agent that investigates is read-only everywhere it runs &mdash; a locked-down investigator role with no write access, ever. What it can even be pointed at is gated separately: only resources labeled Kubernaut-managed are ever admitted, checked at the ingress point before the agent is invoked &mdash; two independent gates, not one assumption. The default role ships narrow; granting it anything more is an explicit, separately-bound decision you make &mdash; and Kubernaut flags it as a privilege-escalation risk when you do &mdash; never a side effect of a normal install or upgrade.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Execution scoped to a ServiceAccount you control</h3>
+        <p>Remediation itself runs as a Kubernetes Job or Tekton PipelineRun on the target cluster, under a ServiceAccount you provision and scope to that one workflow &mdash; not a shared, standing credential. That&rsquo;s different from agents that draft their own remediation and RBAC per incident: whatever grants that RBAC still has to hold every permission it might ever hand out. Kubernaut&rsquo;s operators define the workflow and its ServiceAccount ahead of time, through the same review as any other change, so the blast radius is fixed and audited before an incident happens &mdash; not computed by a model in the middle of one.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Credentials never reach the model</h3>
+        <p>Every result from an MCP tool call the agent reads back &mdash; Secret data, ConfigMaps, pod details &mdash; passes through a credential-scrubbing pipeline covering two dozen-plus patterns for database URLs, API keys, and tokens before it ever reaches the LLM&rsquo;s context, not just a blanket redaction of Secret objects by type. If that pipeline ever fails, Kubernaut withholds the tool result entirely rather than risk passing anything unsanitized through &mdash; the failure mode is losing a data point mid-investigation, not leaking a credential.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Built-in prompt-injection defense</h3>
+        <p>A shadow agent &mdash; a second, independent model &mdash; reviews every tool result for injection attempts, then reviews the full investigation again as it moves into workflow discovery &mdash; a phase handled by its own, separately configurable model &mdash; to catch attacks spread thin across multiple steps. It&rsquo;s opt-in and fails closed: anything that looks like it&rsquo;s steering the investigation rather than informing it stops execution for a human to look, not a guess to run with. Already run a dedicated prompt-injection or LLM-guardrail product? This layers underneath it, not instead of it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section id="features" class="section alt">
+  <div class="wrap">
+    <p class="eyebrow reveal-item">Key capabilities</p>
+    <h2 class="reveal-item">Built for safe, auditable remediation.</h2>
+    <p class="section-lede reveal-item">Every capability below is designed around one rule: humans stay in control, and every action is explainable after the fact.</p>
+
+    <div class="features-grid">
+      <article class="reveal-item">
+        <h3>Dual-Mode Operation</h3>
+        <p>Autonomous end-to-end remediation, or interactive sessions where operators guide the agent via MCP or A2A &mdash; both share the same approval gates and audit trails.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Multi-Source Signal Ingestion</h3>
+        <p>Prometheus alerts (reactive and proactive) and Kubernetes events, deduplicated by fingerprint at the ingress point before entering the pipeline.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>AI-Powered Root Cause Analysis</h3>
+        <p>The Kubernaut Agent uses LLM providers (Vertex AI, OpenAI, Anthropic, Bedrock, Ollama, and more) with native Kubernetes inspection tools.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Workflow Catalog</h3>
+        <p>Searchable, declarative RemediationWorkflow CRDs matched by category and label with confidence scoring.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Flexible Execution</h3>
+        <p>Kubernetes Jobs, Tekton Pipelines, or Ansible (AWX/AAP) &mdash; pick the engine that matches the remediation.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Safety-First Design</h3>
+        <p>Admission webhooks, human approval gates, configurable confidence thresholds, and effectiveness tracking before anything ships unsupervised.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>SOC2 Alignment</h3>
+        <p>Full audit trails with 7-year retention, CRD reconstruction from audit events, and operator attribution on every action.</p>
+      </article>
+      <article class="reveal-item">
+        <h3>Effectiveness Tracking</h3>
+        <p>Four-dimensional post-remediation scoring feeds back into the agent, so it learns to avoid repeating failed remediations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT ON ============ -->
+<section id="built-on" class="section">
+  <div class="wrap">
+    <p class="eyebrow reveal-item">Built on tools you already run</p>
+    <h2 class="reveal-item">No new platform to adopt.</h2>
+    <p class="section-lede reveal-item">Kubernaut plugs into your existing Kubernetes, observability, and automation stack.</p>
+
+    <div class="built-on-grid">
+      <div class="built-on-card reveal-item">
+        <h3>Platform &amp; Execution</h3>
+        <ul class="pills">
+          <li>Kubernetes</li>
+          <li>Prometheus</li>
+          <li>OPA / Rego</li>
+          <li>Tekton Pipelines</li>
+          <li>Ansible (AWX/AAP)</li>
+        </ul>
+      </div>
+      <div class="built-on-card reveal-item">
+        <h3>LLM Providers</h3>
+        <ul class="pills">
+          <li>Vertex AI</li>
+          <li>OpenAI</li>
+          <li>Anthropic</li>
+          <li>Amazon Bedrock</li>
+          <li>Ollama</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section cta-band">
+  <div class="wrap">
+    <h2 class="reveal-item">Ready to find root cause in minutes, not hours?</h2>
+    <div class="cta reveal-item">
+      <a class="btn" href="https://jordigilh.github.io/kubernaut-docs/latest/getting-started/installation/">Get Started</a>
+      <a class="btn ghost" href="https://github.com/jordigilh/kubernaut">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footwrap">
+    <div class="footcol">
+      <h4>Docs</h4>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/getting-started/installation/">Getting Started</a>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/architecture/overview/">Architecture</a>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/api-reference/">API Reference</a>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/faq/">FAQ</a>
+    </div>
+    <div class="footcol">
+      <h4>Community</h4>
+      <a href="https://github.com/jordigilh/kubernaut">GitHub Repository</a>
+      <a href="https://github.com/jordigilh/kubernaut/issues">Issues &amp; Feature Requests</a>
+      <a href="https://github.com/jordigilh/kubernaut/discussions">Discussions</a>
+    </div>
+    <div class="footcol">
+      <h4>Project</h4>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/whats-new/">What&rsquo;s New</a>
+      <a href="https://jordigilh.github.io/kubernaut-docs/latest/whats-next/">Roadmap</a>
+      <a href="https://github.com/jordigilh/kubernaut/blob/main/LICENSE">Apache-2.0 License</a>
+    </div>
+    <div class="footcol footbrand">
+      <a class="mark" href="#top">
+        <img src="assets/logo.svg" alt="" width="20" height="20">
+        Kubernaut
+      </a>
+      <p>&copy; 2026 Kubernaut Contributors</p>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js?v=1"></script>
+</body>
+</html>
