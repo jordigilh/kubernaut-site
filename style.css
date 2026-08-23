@@ -307,6 +307,8 @@ nav.scrolled{border-color:var(--hair)}
 }
 .features-grid h3{font-size:1.05rem;margin-bottom:8px}
 .features-grid p{color:var(--mute);font-size:.95rem}
+.features-grid p a,.phases-note a{color:var(--teal-dark);text-decoration:underline;text-decoration-color:var(--hair)}
+.features-grid p a:hover,.phases-note a:hover{text-decoration-color:currentColor}
 
 /* Console */
 .console-video{max-width:640px;margin:0 auto 56px}

@@ -90,7 +90,7 @@
       <li class="reveal-item">
         <span class="phase-tag c-aa">02</span>
         <h3>AI Analysis</h3>
-        <p>The Kubernaut Agent investigates with 36 built-in tools, produces a root cause analysis, and selects a workflow from the RemediationWorkflow catalog.</p>
+        <p>The Kubernaut Agent investigates with 36 built-in tools &mdash; or, for a <a href="#fleet">fleet-managed</a> cluster, the byte-identical tool schema served by that cluster&rsquo;s K8s MCP Server &mdash; produces a root cause analysis, and selects a workflow from the RemediationWorkflow catalog.</p>
       </li>
       <li class="reveal-item">
         <span class="phase-tag c-approval">03</span>
@@ -384,7 +384,7 @@
       </article>
       <article class="reveal-item">
         <h3>Multi-Source Signal Ingestion</h3>
-        <p>Prometheus alerts (reactive and proactive) and Kubernetes events, deduplicated by fingerprint at the ingress point before entering the pipeline.</p>
+        <p>Prometheus alerts (reactive and proactive) and Kubernetes events, deduplicated by fingerprint at the ingress point before entering the pipeline. <a href="https://github.com/jordigilh/kubernaut/issues/1338">ServiceNow incidents</a> are on the roadmap as a third signal source.</p>
       </article>
       <article class="reveal-item">
         <h3>AI-Powered Root Cause Analysis</h3>
@@ -399,8 +399,8 @@
         <p>Kubernetes Jobs, Tekton Pipelines, or Ansible (AWX/AAP) &mdash; pick the engine that matches the remediation.</p>
       </article>
       <article class="reveal-item">
-        <h3>Safety-First Design</h3>
-        <p>Admission webhooks, human approval gates, configurable confidence thresholds, and effectiveness tracking before anything ships unsupervised.</p>
+        <h3>Trust Ladder</h3>
+        <p>Start in dry-run &mdash; Kubernaut investigates and selects a workflow but executes nothing. Layer in human approval next, gated by Rego policy, confidence thresholds, and admission webhooks. Graduate individual workflows to full autonomy only once you trust the results, and roll back at any time.</p>
       </article>
       <article class="reveal-item">
         <h3>SOC2 Alignment</h3>
@@ -411,6 +411,8 @@
         <p>Four-dimensional post-remediation scoring feeds back into the agent, so it learns to avoid repeating failed remediations.</p>
       </article>
     </div>
+
+    <p class="phases-note reveal-item">Alert remediation is the pillar live today. <a href="https://github.com/jordigilh/kubernaut/issues/554">Threat Remediation</a> (security signals from Falco, Trivy, OPA/Gatekeeper) and <a href="https://github.com/jordigilh/kubernaut/issues/555">Cost Optimization</a> (FinOps via Koku, Kubecost, and OpenCost) are early-stage proposals under exploration for future releases &mdash; see the open issues for where each stands.</p>
   </div>
 </section>
 
