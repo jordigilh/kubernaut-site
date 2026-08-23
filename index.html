@@ -399,8 +399,8 @@
         <p>Kubernetes Jobs, Tekton Pipelines, or Ansible (AWX/AAP) &mdash; pick the engine that matches the remediation.</p>
       </article>
       <article class="reveal-item">
-        <h3>Safety-First Design</h3>
-        <p>Admission webhooks, human approval gates, configurable confidence thresholds, and effectiveness tracking before anything ships unsupervised.</p>
+        <h3>Trust Ladder</h3>
+        <p>Start in dry-run &mdash; Kubernaut investigates and selects a workflow but executes nothing. Layer in human approval next, gated by Rego policy, confidence thresholds, and admission webhooks. Graduate individual workflows to full autonomy only once you trust the results, and roll back at any time.</p>
       </article>
       <article class="reveal-item">
         <h3>SOC2 Alignment</h3>
